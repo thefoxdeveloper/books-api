@@ -45,7 +45,7 @@ class BookController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
         if (Books::where('id', $id)->exists()) {
             $book = Books::find($id);
@@ -55,7 +55,7 @@ class BookController extends Controller
             $book->save();
             return response()->json([
                 'message' => 'Livro atualizado com sucesso'
-            ], 404);
+            ], 202);
         } else {
             return response()->json([
                 'message' => 'Livro não encontrado'
